@@ -4,6 +4,11 @@ on:
   push:
 
 jobs:
+  access_repo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+  
   install_dart:
     runs-on: ubuntu-latest
     steps:
@@ -25,3 +30,5 @@ jobs:
           curl -f https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.0.0-stable.tar.xz > flutter.tar.xz && tar -xf flutter.tar.xz
           echo "`pwd`/flutter/bin" >> "$GITHUB_PATH"
       - run: flutter doctor
+      - run: flutter pub get
+      - run: flutter build apk
