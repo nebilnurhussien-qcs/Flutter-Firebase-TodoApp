@@ -22,7 +22,7 @@ jobs:
 
   install_flutter:
     runs-on: ubuntu-latest
-    needs: [install_dart]
+    needs: [install_dart,access_repo]
     steps:
       - run: sudo apt-get install -y libglu1-mesa
       - run: sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev libstdc++-12-dev
@@ -30,5 +30,6 @@ jobs:
           curl -f https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.0.0-stable.tar.xz > flutter.tar.xz && tar -xf flutter.tar.xz
           echo "`pwd`/flutter/bin" >> "$GITHUB_PATH"
       - run: flutter doctor
+      - run: ls -la
       - run: flutter pub get
       - run: flutter build apk
