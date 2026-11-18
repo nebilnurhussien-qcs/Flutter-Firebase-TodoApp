@@ -1,0 +1,12 @@
+name: Flutter Workflow
+
+on:
+  push:
+
+jobs:
+  install_flutter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - run: apt-get --version
