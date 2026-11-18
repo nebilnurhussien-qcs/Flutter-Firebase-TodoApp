@@ -34,3 +34,7 @@ jobs:
       - run: ls -la
       - run: flutter pub get
       - run: flutter build apk
+      - uses: actions/upload-artifact@v7
+        with:
+          name: artifact-data
+          path: build/app/outputs/flutter-apk/*.apk
